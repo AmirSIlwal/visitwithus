@@ -8,13 +8,7 @@ import '../../widget/navdrawer.dart';
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
+    return Container(
     );
   }
 }
@@ -30,13 +24,13 @@ class MyHomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {}, //Search data comes from API
-            icon: const Icon(Icons.search),
+            icon: const Icon(Icons.person),
           )
         ],
       ),
-      body: Center( 
+      body: Center(
 
-        child: ListTile ( 
+        child: ListTile (
 
         ),
       ),

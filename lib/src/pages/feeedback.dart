@@ -6,7 +6,7 @@ class FeedBackPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-       child: Text( " Sagar"),
+       child: Text( "places to go "),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visitwithus/src/library/locallibrary.dart';
 import 'package:visitwithus/src/pages/feeedback.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -14,19 +15,23 @@ class NavDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
             decoration: BoxDecoration(
-                color: Colors.green,
+               // color: Colors.green
                 image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage('assets/images/cover.jpg'))),
+                  image:
+                   AssetImage('D:\flutter Project\photos\photo1.jpg'))),
+                 //Image.network('https://www.oyorooms.com/blog/wp-content/uploads/2018/08/CHITWAN-NATIONAL-PARK-min.jpg');
+                 //image: Image.network(https://www.oyorooms.com/blog/wp-content/uploads/2018/08/CHITWAN-NATIONAL-PARK-min.jpg))
+
           ),
           ListTile(
-            leading: Icon(Icons.input),
-            title: Text('Welcome'),
+            leading: Icon(Icons.hotel),
+            title: Text('hotel'),
             onTap: () => {},
           ),
           ListTile(
-            leading: Icon(Icons.verified_user),
-            title: Text('Profile'),
+            leading: Icon(Icons.place),
+            title: Text('Places to go'),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
@@ -35,8 +40,8 @@ class NavDrawer extends StatelessWidget {
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
-            leading: Icon(Icons.border_color),
-            title: Text('Feedback'),
+            leading: Icon(Icons.festival),
+            title: Text('Festivals and events of nepal'),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
