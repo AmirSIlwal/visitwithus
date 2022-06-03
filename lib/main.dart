@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:visitwithus/src/library/locallibrary.dart';
 
 void main() {
-  runApp(const HomePage());
+  runApp(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+      theme: ThemeData(primaryColor: Color(0xFFEC965F),),
+      home: HomePage()
+  ));
 }
