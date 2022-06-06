@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:visitwithus/src/pages/homepage.dart';
+import 'package:visitwithus/src/library/locallibrary.dart';
+late SliverGridDelegate gridDelegate;
+void init(){
+  gridDelegate;
+}
 void main() {
+ // final SliverGridDelegate gridDelegate;
   runApp(
       MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData( primaryColor: Color(0xFFAA00FF)),
-        home: MyHomePage(),
-      ));
-}
-
-class myloginform {
+      theme: ThemeData(primaryColor: Color(0xFFEC965F),),
+      home: HomePage(gridDelegate)
+  ));
 }
