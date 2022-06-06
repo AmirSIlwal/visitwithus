@@ -1,9 +1,6 @@
 import 'package:visitwithus/src/library/locallibrary.dart';
 
 import 'package:flutter/material.dart';
-import 'package:visitwithus/widget/buttonnavbar.dart';
-
-import '../../widget/navdrawer.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -17,7 +14,6 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavDrawer(),
       appBar: AppBar(
         title: Center(child: Text('Visit With Us')),
         // automaticallyImplyLeading: false,
