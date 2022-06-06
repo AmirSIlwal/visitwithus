@@ -10,11 +10,14 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:visitwithus/main.dart';
 import 'package:visitwithus/src/library/locallibrary.dart';
-
+late SliverGridDelegate gridDelegate;
+void init(){
+  gridDelegate;
+}
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const HomePage());
+    await tester.pumpWidget( HomePage(gridDelegate));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

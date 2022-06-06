@@ -1,19 +1,30 @@
+import 'package:visitwithus/main.dart';
 import 'package:visitwithus/src/library/locallibrary.dart';
-import 'package:visitwithus/src/pages/login.dart';
- class HomePage extends StatelessWidget {
-   const HomePage({Key? key}) : super(key: key);
+ class HomePage extends StatefulWidget {
+   final SliverGridDelegate gridDelegate;
+    HomePage(this.gridDelegate,{Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+    void initState(){
+      gridDelegate;
+    }
 
    @override
    Widget build(BuildContext context) {
      return Scaffold(
+       backgroundColor: Theme.of(context).primaryColor,
        drawer: NavDrawer(),
        appBar: AppBar(
-         title: Center(child:Text('Travel With Us')),
+         title: const Center(child:Text('Travel With Us')),
         // leading: Icon(Icons.menu),
          actions: [
            IconButton(onPressed:()=>Navigator.push(context,
              MaterialPageRoute(builder: (context) => MyLoginpage()),),
-                icon: Icon(Icons.person))
+                icon: const Icon(Icons.person))
          ],
        ),
        body: Container(
@@ -21,14 +32,14 @@ import 'package:visitwithus/src/pages/login.dart';
              controller: ScrollController(),
            child: Column(
              children: [
-               SearchBar("Places"),
-               Header("Popular Spots"),
+               const SearchBar("Places"),
+               const Header("Popular Spots"),
                Row(
                  mainAxisAlignment: MainAxisAlignment.center,
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    Container(
-                     height: 200,
+                     height: 150,
                      width: 300,
                      child:
                          ListView(
@@ -43,16 +54,19 @@ import 'package:visitwithus/src/pages/login.dart';
                            ]
                          ),
                    ),
-                   SeeMore()
-                 ],
-               ),
-               Header('Adventures'),
+                    SeeMore(
+                      onpressed:()=>Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>   SeeMorePage(widget.gridDelegate ))),
+                    )
+               ]),
+               const Header('Adventures'),
              Row(
                  mainAxisAlignment: MainAxisAlignment.center,
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    Container(
-                       height: 200,
+                       height: 150,
                        width: 300,
                        child:  ListView(
                            controller: ScrollController(),
@@ -66,15 +80,19 @@ import 'package:visitwithus/src/pages/login.dart';
                            ]
                        ),
              ),
-             SeeMore(),
-                   ]),
+             SeeMore(
+                 onpressed:()=>Navigator.push(
+                   context,
+                   MaterialPageRoute(builder: (context) =>   SeeMorePage(widget.gridDelegate ))),
+             )
+                 ]),
                Header('Cultural Heritage'),
                Row(
                    mainAxisAlignment: MainAxisAlignment.center,
                    crossAxisAlignment: CrossAxisAlignment.start,
                    children: [
                      Container(
-                       height: 200,
+                       height: 150,
                        width: 300,
                        child:  ListView(
                            controller: ScrollController(),
@@ -88,13 +106,42 @@ import 'package:visitwithus/src/pages/login.dart';
                            ]
                        ),
                      ),
-                     SeeMore(),
+                     SeeMore(
+                         onpressed:()=>Navigator.push(
+                           context,
+                           MaterialPageRoute(builder: (context) =>   SeeMorePage(widget.gridDelegate )),
+                     ),)
                    ]),
+             Row(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   Container(
+                     height: 150,
+                     width: 300,
+                     child:  ListView(
+                         controller: ScrollController(),
+                         scrollDirection: Axis.horizontal,
+                         children: [
+                           ImageTile('Langtang', 'assets/langtang.jpg'),
+                           ImageTile('Langtang', 'assets/langtang.jpg'),
+                           ImageTile('Langtang', 'assets/langtang.jpg'),
+                           ImageTile('Langtang', 'assets/langtang.jpg'),
+                           ImageTile('Langtang', 'assets/langtang.jpg'),
+                         ]
+                     ),
+                   ),
+                   SeeMore(
+                     onpressed:()=>Navigator.push(
+                         context,
+                         MaterialPageRoute(builder: (context) =>   SeeMorePage(widget.gridDelegate )),
+                   ),
 
-                ])
-     ) ));
+                   )])
+     ]),
+         )));
    }
-   }
+}
 class SearchBar extends StatelessWidget {
   final String texthint;
 
@@ -144,7 +191,7 @@ class Label extends StatelessWidget {
     return Center(
       child: Padding(padding: EdgeInsets.only(left:0,right:10 ,top:0,bottom: 2),
           child: Text(word,style: TextStyle(fontWeight:FontWeight.bold,color: Colors.redAccent,fontSize: size))),
-    );;
+    );
   }
 }
 class ImageTile extends StatelessWidget {
@@ -170,7 +217,8 @@ String label;
   }
 }
 class SeeMore extends StatelessWidget {
-  const SeeMore({Key? key}) : super(key: key);
+   final onpressed;
+   SeeMore({this.onpressed,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -180,7 +228,7 @@ class SeeMore extends StatelessWidget {
       color: Colors.black12,
       child: Column(
         children: [
-          IconButton(onPressed: (){}, icon:Icon (Icons.arrow_forward)
+          IconButton(onPressed:onpressed, icon:Icon (Icons.arrow_forward)
           ),
           Text('see'),
           Text('more'),
